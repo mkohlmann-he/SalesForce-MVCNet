@@ -1,0 +1,37 @@
+﻿@model SalesForce_MVCNet.Models.SurveyRecord
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Content/Santa.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Santa's Little Helper</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6"><br /></div>
+            @RenderBody()                
+        </div>
+    
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/SantaController.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿body {
+    display:flexbox;
+    height:1200px;
+    background: url("Images/Santa-Clause.jpg") no-repeat top content-box;
+    background-attachment:fixed;
+    background-color: black;
+
+}
+
+container {
+    display:block;
+}
+
+.main_body {
+    height: 1000px;
+}
+
+.speech_box{
+    background: url('Images/speech_bubble.jpg');
+    background-size: 100% 100%;
+    padding: 10%;
+}
+
+.white_background{
+    background-color:white;
+}
+

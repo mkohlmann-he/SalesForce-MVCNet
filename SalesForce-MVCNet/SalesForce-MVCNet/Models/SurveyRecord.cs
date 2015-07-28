@@ -12,30 +12,29 @@ namespace SalesForce_MVCNet.Models
         public int SurveyRecordID { get; set; }
 
         [Required()]
+        [Display(Name = "Child's Name")]
         public string childName { get; set; }
 
-        [Required()]
+        [Display(Name = "Parent's Name")]
         public string parentName { get; set; }
 
-        [Required()]
         [Display(Name="Email Address")]
         [DataType(DataType.EmailAddress)]
         public string emailAddress { get; set; }
         
-        [Required()]
+        [Display(Name = "Child's Age")]
         public int childAge { get; set; }
 
-        [Required()]
         public string Country { get; set; }
 
-        [Required()]
         public string State { get; set; }
 
-        [Required()]
         public string City { get; set; }
 
+        [Display(Name = "Survey's Responses")]
         public string SurveyResponses { get; set; }
 
+        [Display(Name = "Recommendations that were Accepted")]
         public string AcceptedRecommendations { get; set; }
 
     }

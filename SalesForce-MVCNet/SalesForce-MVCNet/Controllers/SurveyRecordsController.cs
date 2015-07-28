@@ -47,7 +47,7 @@ namespace SalesForce_MVCNet.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "SurveyRecordID,childName,parentName,emailAddress,childAge,Country,State,City")] SurveyRecord surveyRecord)
+        public async Task<ActionResult> Create([Bind(Include = "SurveyRecordID,childName,parentName,emailAddress,childAge,Country,State,City,SurveyResponses,AcceptedRecommendations")] SurveyRecord surveyRecord)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +58,10 @@ namespace SalesForce_MVCNet.Controllers
 
             return View(surveyRecord);
         }
+
+
+
+
 
         // GET: SurveyRecords/Edit/5
         public async Task<ActionResult> Edit(int? id)
@@ -79,7 +83,7 @@ namespace SalesForce_MVCNet.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "SurveyRecordID,childName,parentName,emailAddress,childAge,Country,State,City")] SurveyRecord surveyRecord)
+        public async Task<ActionResult> Edit([Bind(Include = "SurveyRecordID,childName,parentName,emailAddress,childAge,Country,State,City,SurveyResponses,AcceptedRecommendations")] SurveyRecord surveyRecord)
         {
             if (ModelState.IsValid)
             {

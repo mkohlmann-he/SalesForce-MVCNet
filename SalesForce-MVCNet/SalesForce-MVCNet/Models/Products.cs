@@ -12,15 +12,19 @@ namespace SalesForce_MVCNet.Models
         public int ProductID { get; set; }
 
         [Required()]
+        [Display(Name = "Product Name")]
         public string Name { get; set; }
 
         [Required()]
+        [Display(Name = "Product Description")]
         public string Description { get; set; }
 
         [Required()]
+        [Display(Name = "Product Obsolete?")]
         public bool Obsolete { get; set; }
 
         [Required()]
+        [Display(Name = "Quantity In Stock")]
         public int QuantityInStock { get; set; }
     }
 }
