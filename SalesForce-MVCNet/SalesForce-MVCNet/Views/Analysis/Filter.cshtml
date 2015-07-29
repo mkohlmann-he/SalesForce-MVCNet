@@ -1,0 +1,86 @@
+﻿@model IEnumerable<SalesForce_MVCNet.Models.SurveyRecord>
+
+@{
+    ViewBag.Title = "Filter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="DivFilter">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <h2>Filter</h2>
+            </div>
+            <div class="row">
+                <!-- Insert Fitlering controls Here! -->
+                Insert Filtering controls Here!
+                <div class="col-sm-1">
+                    Age<br />
+                    @Html.ListBox("ListBoxChildAge")
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <h2>Graph</h2>
+            </div>
+            <div class="row">
+                <!-- Insert Graphing controls Here! -->
+                Insert Graphing controls Here!
+            </div>
+        </div>        
+    </div>
+</div>
+
+<div id="DivData">
+    <h2>Raw Data</h2>
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Age", "Filter", new { sortOrder = ViewBag.AgeSortParm })
+                <!--@Html.DisplayNameFor(model => model.childAge)-->
+            </th>
+            <th>
+                @Html.ActionLink("Country", "Filter", new { sortOrder = ViewBag.CountrySortParm })
+                <!--@Html.DisplayNameFor(model => model.Country)-->
+            </th>
+            <th>
+                @Html.ActionLink("State", "Filter", new { sortOrder = ViewBag.StateSortParam })
+                <!--@Html.DisplayNameFor(model => model.State)-->
+            </th>
+            <th>
+                @Html.ActionLink("City", "Filter", new { sortOrder = ViewBag.CitySortParam })
+                <!--@Html.DisplayNameFor(model => model.City)-->
+            </th>
+            <th>
+                @Html.ActionLink("Survey Responses", "Filter", new { sortOrder = ViewBag.ResponseSortParam })
+                <!--@Html.DisplayNameFor(model => model.SurveyResponses)-->
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.childAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SurveyResponses)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
