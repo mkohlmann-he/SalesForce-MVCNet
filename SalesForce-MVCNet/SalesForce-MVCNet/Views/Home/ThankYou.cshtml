@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Thank You?";
+    Layout = "~/Views/Shared/_Santa.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="col-sm-6">
+        <div class="row" id="DivThankYou">
+            <div class="row speech_box text-center">
+                <p><h2>HO HO HO! Very good, yes very good. I think I have enough to get you a good present this year. Happy Holidays, and I'll see you on Christmas Eve! HO HO HO!!</h2></p>
+                <p><br /><br /><br /></p>
+            </div>
+        </div>
+    </div>
+}
+
+
