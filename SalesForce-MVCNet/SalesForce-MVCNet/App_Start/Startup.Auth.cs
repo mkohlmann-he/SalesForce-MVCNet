@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using Owin.Security.Providers.Salesforce;
 using SalesForce_MVCNet.Models;
 
 namespace SalesForce_MVCNet
@@ -62,6 +63,22 @@ namespace SalesForce_MVCNet
             //{
             //    ClientId = "",
             //    ClientSecret = ""
+
+
+            // SalesForce.com Authentication
+            var options = new SalesforceAuthenticationOptions
+            {
+                ClientId = "3MVG98SW_UPr.JFhpEAFBhAYTvb2MeiwBMl3rr5airKRotQuJxTPqkeMQTmX4xgMixjC8UjPqIw4GUMoNyjKF",
+                ClientSecret = "5962603308992032648",
+                Endpoints = new SalesforceAuthenticationOptions.SalesforceAuthenticationEndpoints
+                {
+                    AuthorizationEndpoint = "https://na31.salesforce.com/services/oauth2/authorize",
+                    TokenEndpoint = "https://na31.salesforce.com/services/oauth2/token"
+                }
+            };
+            app.UseSalesforceAuthentication(options);
+            //   appId: "",
+            //   appSecret: "");
             //});
         }
     }

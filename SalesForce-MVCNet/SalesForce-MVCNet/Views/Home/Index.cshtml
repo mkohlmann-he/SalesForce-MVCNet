@@ -12,6 +12,12 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     
+    <!-- Required for SalesForce Lead Generator -->
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <!--  -->
+
+
+
     <div class="col-sm-6">
         <div class="form-horizontal">
             <div class="row" id="DivChildName">
@@ -107,13 +113,10 @@
         </div>
 
 
-
-
-
-
         <div class="row" id="DivCountry">
             <div class="row speech_box text-center">
-                <p><h2>HO HO HO! Thank you. I hate to ask, but what country to you live in again? I don't want to miss you when I deliver your presents!</h2></p>
+                <p><h2>HO HO HO! Thank you!<br />
+                    ... I hate to ask, but what country to you live in again? I don't want to miss you when I deliver your presents!</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
@@ -146,7 +149,7 @@
             <div class="form-group">
                 @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-                <input type="button" value="OK!" class="btn btn-default" id="ButtonCity" />
+                <input type="submit" value="OK!" class="btn btn-default" />
             </div>
         </div>
 
@@ -184,17 +187,6 @@
         </div>
 
 
-
-        <div class="row" id="DivSubmit">
-            <div class="row speech_box text-center">
-                <p><h2>City Question?</h2></p>
-                <p><br /><br /><br /></p>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="OK!" class="btn btn-default"/>
-            </div>
-        </div>      
     </div>
 }
 

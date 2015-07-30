@@ -7,21 +7,40 @@
 
 <div id="DivFilter">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="row">
                 <h2>Filter</h2>
             </div>
             <div class="row">
                 <!-- Insert Fitlering controls Here! -->
-                Insert Filtering controls Here!
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     Age<br />
                     @Html.ListBox("ListBoxChildAge")
                     <br />
                 </div>
+                <div class="col-sm-2">
+                    Country<br />
+                    @Html.ListBox("ListBoxCountry")
+                    <br />
+                </div>
+                <div class="col-sm-2">
+                    State<br />
+                    @Html.ListBox("ListBoxState")
+                    <br />
+                </div>
+                <div class="col-sm-2">
+                    City<br />
+                    @Html.ListBox("ListBoxCity")
+                    <br />
+                </div>
+                <div class="col-sm-2">
+                    City<br />
+                    @Html.ListBox("ListBoxResults")
+                    <br />
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="row">
                 <h2>Graph</h2>
             </div>
@@ -39,7 +58,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.ActionLink("Age", "Filter", new { sortOrder = ViewBag.AgeSortParm })
+                @Html.ActionLink("Age", "Filter", new { sortOrder = ViewBag.AgeSortParm } )
                 <!--@Html.DisplayNameFor(model => model.childAge)-->
             </th>
             <th>

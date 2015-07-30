@@ -19,10 +19,15 @@ namespace SalesForce_MVCNet.Controllers
 
         public AnalysisController()
         {
+            ReloadRecords();
+        }
+
+        // Refresh Data from Database
+        public void ReloadRecords()
+        {
             this.records = from rec in db.SurveyRecords
                            select rec;
         }
-
 
         // GET: Analysis
         public ActionResult Index()
@@ -42,7 +47,7 @@ namespace SalesForce_MVCNet.Controllers
             return View();
         }
 
-        //[Authorize]
+        [Authorize]
         // GET: Filter
         public ActionResult Filter(string sortOrder)
         {
@@ -55,7 +60,7 @@ namespace SalesForce_MVCNet.Controllers
                 ViewBag.CitySortParam = "city_asc";
                 ViewBag.ResponseSortParam = "response_asc";
             }
-            
+                        
             // Otherwise Update existing sort orders
             ViewBag.AgeSortParm = sortOrder == "childAge_asc" ? "childAge_desc" : ViewBag.AgeSortParm;
             ViewBag.AgeSortParm = sortOrder == "childAge_desc" ? "childAge_asc" : ViewBag.AgeSortParm;
@@ -70,6 +75,7 @@ namespace SalesForce_MVCNet.Controllers
 
             //var records = from rec in db.SurveyRecords
             //                select rec;
+            
             switch (sortOrder)
             {
                 case "childAge_desc":
@@ -107,6 +113,54 @@ namespace SalesForce_MVCNet.Controllers
                     records = records.OrderBy(rec => rec.childAge);
                     break;
             }
+
+            // Populate List Select Boxes
+
+            // Note: I KNOW there HAS to be a better way of doing this... 
+            // This is a ridiculous O(n^2) process, but I can't figure out a better way. 
+            // It seems like there should be an easy way to build a list box without having to iterate the entire loop each time.
+
+            List<int> ListBoxChildAge = new List<int>();
+            List<string> ListBoxCountry = new List<string>();
+            List<string> ListBoxState = new List<string>();
+            List<string> ListBoxCity = new List<string>();
+            List<string> ListBoxResults = new List<string>();
+
+            //foreach (System.Linq.IQueryable<SalesForce_MVCNet.Models.SurveyRecord> SurveyRecord in records)
+            foreach (SurveyRecord surveyRecord in records)
+            {
+                if (!ListBoxChildAge.Contains(surveyRecord.childAge))
+                {
+                    ListBoxChildAge.Add(surveyRecord.childAge);
+                }
+                if (!ListBoxCountry.Contains(surveyRecord.Country))
+                {
+                    ListBoxCountry.Add(surveyRecord.Country);
+                }
+                if (!ListBoxState.Contains(surveyRecord.State))
+                {
+                    ListBoxState.Add(surveyRecord.State);
+                }
+                if (!ListBoxCity.Contains(surveyRecord.City))
+                {
+                    ListBoxCity.Add(surveyRecord.City);
+                }
+                if (!ListBoxResults.Contains(surveyRecord.SurveyResponses))
+                {
+                    ListBoxResults.Add(surveyRecord.SurveyResponses);
+                }
+            }
+
+            SelectList SelListChildAge = new SelectList(ListBoxChildAge);
+            SelectList SelListBoxCountry = new SelectList(ListBoxCountry);
+            SelectList SelListState = new SelectList(ListBoxState);
+            SelectList SelListCity = new SelectList(ListBoxCity);
+            SelectList SelListResults = new SelectList(ListBoxResults);
+            ViewBag.ListBoxChildAge = SelListChildAge;
+            ViewBag.ListBoxCountry = SelListBoxCountry;
+            ViewBag.ListBoxState = SelListState;
+            ViewBag.ListBoxCity = SelListCity;
+            ViewBag.ListBoxResults = SelListResults;
 
             return View(records);
         }
