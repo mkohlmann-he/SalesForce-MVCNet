@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = "What's your name?";
+    ViewBag.Title = "Santa's Little Helper";
     Layout = "~/Views/Shared/_Santa.cshtml";
 }
 
@@ -22,80 +22,98 @@
         <div class="form-horizontal">
             <div class="row" id="DivChildName">
                 <div class="row speech_box text-center">
-                    <p><h2>HO HO HO! Well Hello! And what's your name?</h2></p>
+                    <p><h2>HO HO HO! Well Hello There Little One!<br />And what's your name?</h2></p>
                     <p><br /><br /><br /></p>
                 </div>
 
                 <div class="form-group">
-                    @Html.EditorFor(model => model.childName, new { htmlAttributes = new { @class = "form-control" } })
+                    <br />
+                    @Html.EditorFor(model => model.childName, new { htmlAttributes = new { @class = "form-control" } })                    
                     @Html.ValidationMessageFor(model => model.childName, "", new { @class = "text-danger" })
+                    <br />
                     <input type="button" value="OK!" class="btn btn-default" id="ButtonChildName" />
+                    <br />
                 </div>
             </div>
         </div>
 
         <div class="row" id="DivChildAge">
             <div class="row speech_box text-center">
-                <p><h2>Welcome to the North Pole little one. And how old are you?</h2></p>
+                <p><h2>Welcome to the North Pole!<br />And how old are you?</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 @Html.EditorFor(model => model.childAge, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.childAge, "", new { @class = "text-danger" })
+                <br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonChildAge" />
+                <br />
             </div>
         </div>
 
         <div class="row" id="DivParentName">
             <div class="row speech_box text-center">
-                <p><h2>Is your mom or dad there with you? What is their name?</h2></p>
+                <p><h2>Is your mom or dad there with you?<br />What is their name?</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 @Html.EditorFor(model => model.parentName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.parentName, "", new { @class = "text-danger" })
+                <br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonParentName" />
+                <br />
             </div>
         </div>
 
         <div class="row" id="DivEmailAddress">
             <div class="row speech_box text-center">
-                <p><h2>Can you get them to type in thier email address? I'm going to tell them how good you were today.</h2></p>
+                <p><h2>Can you get them to type in thier email address?<br />I'm going to tell them how good you were today.</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 @Html.EditorFor(model => model.emailAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.emailAddress, "", new { @class = "text-danger" })
+                <div id="emailValidationResponse"></div>
+                <br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonEmailAddress" />
+                <br />
             </div>
         </div>
 
 
         <div class="row" id="DivGiftQuestion1">
             <div class="row speech_box text-center">
-                <p><h2>Thank you! HO HO HO! Ok, now little one... If you could have only one present in the whole wide world, what would it be?</h2></p>
+                <p><h2>Thank you! HO HO HO!<br />Ok, little one...<br />Now if you could have only one present in the whole wide world, what would it be?</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 <input type="text" id="tbFirst_Request" />
+                <br /><br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonFirstRequest" />
+                <br />
             </div>
         </div>
 
 
         <div class="row" id="DivGiftQuestion2">
             <div class="row speech_box text-center">
-                <p><h2>HO HO HO! That is an excellent gift!! That might be difficult to get you though. If I can't get that, is there anything else you would like?</h2></p>
+                <p><h2>HO HO HO! That is an excellent gift!!<br />That might be difficult to get you though.<br />If I can't get that, is there anything else you would like?</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 <input type="text" id="tbSecond_Request" />
+                <br /><br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonSecondRequest" />
+                <br />
             </div>
         </div>
 
@@ -107,49 +125,59 @@
             </div>
 
             <div class="form-group">
+                <br />
                 <input type="text" id="tbRecommendation" />
+                <br /><br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonRecommendation" />
+                <br />
             </div>
         </div>
 
 
         <div class="row" id="DivCountry">
             <div class="row speech_box text-center">
-                <p><h2>HO HO HO! Thank you!<br />
-                    ... I hate to ask, but what country to you live in again? I don't want to miss you when I deliver your presents!</h2></p>
+                <p><h2>HO HO HO! Thank you!<br />... I hate to ask, but what country to you live in again?<br />I don't want to miss you when I deliver your presents!</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
-            <div class="form-group">
+            <div class="form-group"><br />
                 @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                <br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonCountry" />
+                <br />
             </div>
         </div>
 
         <div class="row" id="DivState">
             <div class="row speech_box text-center">
-                <p><h2>Woa! HO, HO... that's a big country! What state or territory are you in?</h2></p>
+                <p><h2>Woa! HO, HO... that's a big country!<br />Maybe I'll need more help!<br />What state or province are you in?</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                <br />
                 <input type="button" value="OK!" class="btn btn-default" id="ButtonState" />
+                <br />
             </div>
         </div>
 
         <div class="row" id="DivCity">
             <div class="row speech_box text-center">
-                <p><h2>What city should I deliver your presents to?</h2></p>
+                <p><h2>Good! Good! HO HO HO!<br />Ok, Last Question...<br />What city should I deliver your presents to?</h2></p>
                 <p><br /><br /><br /></p>
             </div>
 
             <div class="form-group">
+                <br />
                 @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                <br />
                 <input type="submit" value="OK!" class="btn btn-default" />
+                <br />
             </div>
         </div>
 

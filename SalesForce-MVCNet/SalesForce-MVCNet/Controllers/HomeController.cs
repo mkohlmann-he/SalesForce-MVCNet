@@ -9,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SalesForce_MVCNet.Models;
+using System.Net.Http;
 
 
 
@@ -68,6 +69,14 @@ namespace SalesForce_MVCNet.Controllers
         {
 
             return View();
+        }
+
+
+
+        public ActionResult SalesForceRecordPullTest()
+        {
+            return View();
+ 
         }
 
 

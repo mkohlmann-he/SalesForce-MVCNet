@@ -4,13 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Data Analysis</h2>
-Welcome to the Analysis Page. If you are Logged in, you can begine your analysis of the most recent data @Html.ActionLink("Here", "Filter").
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Begin Analysis" class="btn btn-default" />
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+    <div class="form-group">
+        <h2>Data Analysis</h2>
+        Welcome to the Analysis Page. If you are Logged in, you can begine your analysis of the most recent data @Html.ActionLink("Here", "Filter").
+        <div class="form-group">
+            <a href='@Url.Action("Filter")'>
+                <input type='button' value='Begin Analysis' />
+            </a>
+        </div>
     </div>
-</div>
+
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

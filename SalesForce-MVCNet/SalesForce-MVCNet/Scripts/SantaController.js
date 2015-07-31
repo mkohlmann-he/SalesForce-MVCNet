@@ -76,19 +76,29 @@ $(document).ready(function () {
 // NAVIGATION: On ButtonEmailAddress click, Show the First Request question after that
 $(document).ready(function () {
     $("#ButtonEmailAddress").click(function () {
-        $("#DivChildName").hide();
-        $("#DivChildAge").hide();
-        $("#DivParentName").hide();
-        $("#DivEmailAddress").hide();
-        $("#DivGiftQuestion1").show();
-        $("#DivGiftQuestion2").hide();
-        $("#DivRecommendationQuestion").hide();
-        $("#DivCountry").hide();
-        $("#DivState").hide();
-        $("#DivCity").hide();
-        $("#DivSurveyResponses").hide();
-        $("#DivAcceptedRecommendations").hide();
-        $("#DivSubmit").hide();
+        if (is_email($("#emailAddress").val()))
+        {
+        
+            $("#DivChildName").hide();
+            $("#DivChildAge").hide();
+            $("#DivParentName").hide();
+            $("#DivEmailAddress").hide();
+            $("#DivGiftQuestion1").show();
+            $("#DivGiftQuestion2").hide();
+            $("#DivRecommendationQuestion").hide();
+            $("#DivCountry").hide();
+            $("#DivState").hide();
+            $("#DivCity").hide();
+            $("#DivSurveyResponses").hide();
+            $("#DivAcceptedRecommendations").hide();
+            $("#DivSubmit").hide();
+        
+        }
+        else
+        {
+            $("#emailValidationResponse").text("psst! Please enter a valid email address, so I know where to send this information to later...")
+
+        };
     });
 });
 
@@ -166,6 +176,8 @@ $(document).ready(function () {
         $("#DivSurveyResponses").hide();
         $("#DivAcceptedRecommendations").hide();
         $("#DivSubmit").hide();
+        $("#SurveyResponses").val($("#tbFirst_Request").val());
+        
     });
 });
 
@@ -185,6 +197,7 @@ $(document).ready(function () {
         $("#DivSurveyResponses").hide();
         $("#DivAcceptedRecommendations").hide();
         $("#DivSubmit").hide();
+        $("#SurveyResponses").val($("#SurveyResponses").val() +"|"+ $("#tbSecond_Request").val());
     });
 });
 
@@ -205,9 +218,15 @@ $(document).ready(function () {
         $("#DivSurveyResponses").hide();
         $("#DivAcceptedRecommendations").hide();
         $("#DivSubmit").hide();
+        $("#AcceptedRecommendations").val($("#tbRecommendation").val());
     });
 });
 
+
+function is_email(email) {
+    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailReg.test(email);
+}
 
 
 $('body').on('keydown', 'input', function (event) {

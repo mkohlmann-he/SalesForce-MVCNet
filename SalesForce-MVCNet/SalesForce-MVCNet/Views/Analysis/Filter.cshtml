@@ -46,7 +46,19 @@
             </div>
             <div class="row">
                 <!-- Insert Graphing controls Here! -->
-                Insert Graphing controls Here!
+@*                <a href='@Url.Action("Graph",@Model)' target="_blank">*@
+                <a href='@Url.Action("Graph", new { XAxisGrouping = "Child Age" })' target="_blank">
+                    <input type='button' value='By Child Age' />
+                </a>
+                <a href='@Url.Action("Graph", new { XAxisGrouping = "Country" })' target="_blank">
+                    <input type='button' value='By Country' />
+                </a>
+                <a href='@Url.Action("Graph", new { XAxisGrouping = "State" })' target="_blank">
+                    <input type='button' value='By State' />
+                </a>
+                <a href='@Url.Action("Graph", new { XAxisGrouping = "City" })' target="_blank">
+                    <input type='button' value='By City' />
+                </a>
             </div>
         </div>        
     </div>
@@ -62,7 +74,7 @@
                 <!--@Html.DisplayNameFor(model => model.childAge)-->
             </th>
             <th>
-                @Html.ActionLink("Country", "Filter", new { sortOrder = ViewBag.CountrySortParm })
+                @Html.ActionLink("Country", "Filter", new { sortOrder = ViewBag.CountrySortParam })
                 <!--@Html.DisplayNameFor(model => model.Country)-->
             </th>
             <th>

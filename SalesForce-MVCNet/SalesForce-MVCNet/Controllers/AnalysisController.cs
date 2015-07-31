@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SalesForce_MVCNet.Models;
+using System.Web.Helpers;
+using System.Web.Routing;
 
 namespace SalesForce_MVCNet.Controllers
 {
@@ -46,6 +48,9 @@ namespace SalesForce_MVCNet.Controllers
         {
             return View();
         }
+
+
+
 
         [Authorize]
         // GET: Filter
@@ -112,7 +117,9 @@ namespace SalesForce_MVCNet.Controllers
                 default:
                     records = records.OrderBy(rec => rec.childAge);
                     break;
+
             }
+
 
             // Populate List Select Boxes
 
@@ -151,6 +158,15 @@ namespace SalesForce_MVCNet.Controllers
                 }
             }
 
+            // Sort filter boxes alphabetically
+            ListBoxChildAge.Sort();
+            ListBoxCountry.Sort();
+            ListBoxState.Sort();
+            ListBoxCity.Sort();
+            ListBoxResults.Sort();
+
+
+
             SelectList SelListChildAge = new SelectList(ListBoxChildAge);
             SelectList SelListBoxCountry = new SelectList(ListBoxCountry);
             SelectList SelListState = new SelectList(ListBoxState);
@@ -164,5 +180,76 @@ namespace SalesForce_MVCNet.Controllers
 
             return View(records);
         }
+
+        [Authorize]
+        // GET: Contact
+        public ActionResult Graph(string XAxisGrouping)
+        {
+
+            // Count of Values Graph
+            List<string> XValues = new List<string>();
+            List<int> YValues = new List<int>();
+
+            foreach (SurveyRecord rec in records)
+            {
+                string XValueSearchValue = null;
+                // Dynamic X-Grouping
+                switch (XAxisGrouping)
+                {
+                    case "Child Age":
+                        XValueSearchValue = rec.childAge.ToString();
+                        break;
+                    case "Country":
+                        XValueSearchValue = rec.Country.ToString();
+                        break;
+                    case "State":
+                        XValueSearchValue = rec.State.ToString();
+                        break;
+                    case "City":
+                        XValueSearchValue = rec.City.ToString();
+                        break;
+                    default:
+                        XValueSearchValue = rec.childAge.ToString();
+                        break;
+                }
+
+                if (!XValues.Contains(XValueSearchValue))
+                {
+                    XValues.Add(XValueSearchValue);
+                    YValues.Add(1);
+                }
+                else
+                {
+                    int GeneratedListLength = XValues.Count;
+                    for (int i = 0; i < GeneratedListLength; i++)
+                    {
+                        if (XValueSearchValue == XValues[i])
+                        {
+                            ++YValues[i];
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+
+            var myChart = new Chart(width: 600, height: 400)
+                .AddTitle("Record Count by " + XAxisGrouping)
+                .AddLegend(XAxisGrouping)
+                .SetYAxis("Record Count")
+                .SetXAxis(XAxisGrouping)
+                .AddSeries(
+                    name: XAxisGrouping,
+                    xValue: XValues,
+                    yValues: YValues)
+                .Write();
+
+            ViewBag.Chart = myChart;
+            return View();
+        }
     }
+
+
+
 }

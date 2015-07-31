@@ -77,9 +77,7 @@ namespace SalesForce_MVCNet
                 }
             };
             app.UseSalesforceAuthentication(options);
-            //   appId: "",
-            //   appSecret: "");
-            //});
+
         }
     }
 }
