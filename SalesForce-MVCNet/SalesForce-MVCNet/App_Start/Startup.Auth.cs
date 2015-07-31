@@ -26,7 +26,8 @@ namespace SalesForce_MVCNet
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                //LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Login/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.
@@ -68,8 +69,8 @@ namespace SalesForce_MVCNet
             // SalesForce.com Authentication
             var options = new SalesforceAuthenticationOptions
             {
-                ClientId = "3MVG98SW_UPr.JFhpEAFBhAYTvb2MeiwBMl3rr5airKRotQuJxTPqkeMQTmX4xgMixjC8UjPqIw4GUMoNyjKF",
-                ClientSecret = "5962603308992032648",
+                ClientId = "3MVG98SW_UPr.JFhpEAFBhAYTvTsDDbufebJvenL2cZz3Fg1zrjEh1XegzjBUweR.1hs4gnd6Ml82qTksdEvg",
+                ClientSecret = "4900236915669636430",
                 Endpoints = new SalesforceAuthenticationOptions.SalesforceAuthenticationEndpoints
                 {
                     AuthorizationEndpoint = "https://na31.salesforce.com/services/oauth2/authorize",

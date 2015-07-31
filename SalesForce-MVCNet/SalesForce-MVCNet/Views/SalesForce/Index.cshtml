@@ -1,0 +1,20 @@
+@model IEnumerable<WebApplication9.Models.AccountViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/SalesForce/_Layout.cshtml";
+}
+
+<h2>SalesForce</h2>
+<div class="row">
+    If you are Logged in, you can View your SalesForce records from here.
+    <br />
+    <a href='@Url.Action("Accounts","SalesForce")'>
+        <input type='button' value='Accounts' />
+    </a>
+    <a href='@Url.Action("Leads","SalesForce")'>
+        <input type='button' value='Leads' />
+    </a>
+</div>
+
+

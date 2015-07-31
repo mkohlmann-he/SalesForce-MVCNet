@@ -4,12 +4,14 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SalesForce_MVCNet.Models;
 using System.Net.Http;
+using Salesforce;
 
 
 
@@ -33,6 +35,7 @@ namespace SalesForce_MVCNet.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Post Lead to SalesForce
                 using (WebClient client = new WebClient())
                 {
                     byte[] response =
@@ -51,8 +54,33 @@ namespace SalesForce_MVCNet.Controllers
                     // string result = System.Text.Encoding.UTF8.GetString(response);
                 }
 
+                // Save Record to Database
                 db.SurveyRecords.Add(surveyRecord);
                 await db.SaveChangesAsync();
+
+                // Email Parent after Saving
+
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("mkohlmann_he@dev.bse.edu", "Santa's Little Helper");
+                mail.To.Add(new MailAddress(surveyRecord.emailAddress, surveyRecord.parentName));
+                mail.Subject = "Thank you for using SantaBot - Attached is your " + surveyRecord.childName + " responses.";
+                mail.Body = "Dear " + surveyRecord.parentName + ",\n\nThank you for using StantaBot!\n\nAttached is " + surveyRecord.childName + " responses.\n\nWishList:\n" + surveyRecord.SurveyResponses + "|" + surveyRecord.AcceptedRecommendations + "\n\nHO HO HO! Merry Christmas and Happy New Year!";
+                mail.IsBodyHtml = false;
+
+                SmtpClient server = new SmtpClient();
+                server.UseDefaultCredentials = false;
+                server.Credentials = new System.Net.NetworkCredential("mkohlmann_he@dev.bse.edu", "Fr0$ty01");
+                server.Port = 587; // You can use Port 25 if 587 is blocked (mine is!)
+                server.Host = "smtp.office365.com";
+                server.DeliveryMethod = SmtpDeliveryMethod.Network;
+                server.EnableSsl = true;
+
+                server.Send(mail);
+
+
+
+
+                // Redirect to Thank You page
                 return RedirectToAction("ThankYou");
             }
 
@@ -75,9 +103,9 @@ namespace SalesForce_MVCNet.Controllers
 
         public ActionResult SalesForceRecordPullTest()
         {
+
             return View();
- 
-        }
+         }
 
 
     }

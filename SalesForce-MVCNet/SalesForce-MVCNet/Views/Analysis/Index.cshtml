@@ -14,9 +14,22 @@
     <div class="form-group">
         <h2>Data Analysis</h2>
         Welcome to the Analysis Page. If you are Logged in, you can begine your analysis of the most recent data @Html.ActionLink("Here", "Filter").
-        <div class="form-group">
+        <div class="row form-group">
             <a href='@Url.Action("Filter")'>
                 <input type='button' value='Begin Analysis' />
+            </a>
+        </div>
+        <hr />
+        <div class="row">
+            <h2>Edit Records</h2>
+            If you are Logged in, you can edit the database records from here.
+            <br />
+
+            <a href='@Url.Action("Index","SurveyRecords")'>
+                <input type='button' value='Records' />
+            </a>
+            <a href='@Url.Action("Index","Products")'>
+                <input type='button' value='Products' />
             </a>
         </div>
     </div>

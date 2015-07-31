@@ -1,0 +1,57 @@
+@model IEnumerable<WebApplication9.Models.LeadsViewModels>
+
+@{
+    ViewBag.Title = "Leads";
+    Layout = "~/Views/SalesForce/_Layout.cshtml";
+}
+
+<h2>Accounts</h2>
+name, email, country, state, city, description
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Email)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Country)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.State)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.City)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Description)
+        </th>
+        <th>@Html.ActionLink("Email", "Email", new { email = item.Email, name = item.Name })</th>
+    </tr>
+}
+
+</table>
