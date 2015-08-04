@@ -58,24 +58,23 @@ namespace SalesForce_MVCNet.Controllers
                 db.SurveyRecords.Add(surveyRecord);
                 await db.SaveChangesAsync();
 
-                // Email Parent after Saving
+                //// Email Parent after Saving
+                //MailMessage mail = new MailMessage();
+                //mail.From = new MailAddress("", "Santa's Little Helper");
+                //mail.To.Add(new MailAddress(surveyRecord.emailAddress, surveyRecord.parentName));
+                //mail.Subject = "Thank you for using SantaBot - Attached is your " + surveyRecord.childName + " responses.";
+                //mail.Body = "Dear " + surveyRecord.parentName + ",\n\nThank you for using StantaBot!\n\nAttached is " + surveyRecord.childName + " responses.\n\nWishList:\n" + surveyRecord.SurveyResponses + "|" + surveyRecord.AcceptedRecommendations + "\n\nHO HO HO! Merry Christmas and Happy New Year!";
+                //mail.IsBodyHtml = false;
 
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("mkohlmann_he@dev.bse.edu", "Santa's Little Helper");
-                mail.To.Add(new MailAddress(surveyRecord.emailAddress, surveyRecord.parentName));
-                mail.Subject = "Thank you for using SantaBot - Attached is your " + surveyRecord.childName + " responses.";
-                mail.Body = "Dear " + surveyRecord.parentName + ",\n\nThank you for using StantaBot!\n\nAttached is " + surveyRecord.childName + " responses.\n\nWishList:\n" + surveyRecord.SurveyResponses + "|" + surveyRecord.AcceptedRecommendations + "\n\nHO HO HO! Merry Christmas and Happy New Year!";
-                mail.IsBodyHtml = false;
+                //SmtpClient server = new SmtpClient();
+                //server.UseDefaultCredentials = false;
+                //server.Credentials = new System.Net.NetworkCredential("", "");
+                //server.Port = 587; // You can use Port 25 if 587 is blocked (mine is!)
+                //server.Host = "smtp.office365.com";
+                //server.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //server.EnableSsl = true;
 
-                SmtpClient server = new SmtpClient();
-                server.UseDefaultCredentials = false;
-                server.Credentials = new System.Net.NetworkCredential("mkohlmann_he@dev.bse.edu", "Fr0$ty01");
-                server.Port = 587; // You can use Port 25 if 587 is blocked (mine is!)
-                server.Host = "smtp.office365.com";
-                server.DeliveryMethod = SmtpDeliveryMethod.Network;
-                server.EnableSsl = true;
-
-                server.Send(mail);
+                //server.Send(mail);
 
 
 

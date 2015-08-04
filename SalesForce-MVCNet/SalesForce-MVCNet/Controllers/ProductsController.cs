@@ -124,5 +124,26 @@ namespace SalesForce_MVCNet.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        //public async Task<ActionResult> SelectRandomItem()
+        //{
+        //    List<Products> products = await db.Products.ToListAsync();
+        //    Products product = null;
+
+        //    if (products == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    else
+        //    {
+        //        int numberOfProducts = products.Count();
+        //        int index = System.Random.]
+        //        product = products[0];
+
+        //    }
+        //    return (product);
+
+        //}
     }
 }

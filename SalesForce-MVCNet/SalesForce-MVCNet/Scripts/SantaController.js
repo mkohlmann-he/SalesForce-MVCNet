@@ -197,7 +197,23 @@ $(document).ready(function () {
         $("#DivSurveyResponses").hide();
         $("#DivAcceptedRecommendations").hide();
         $("#DivSubmit").hide();
-        $("#SurveyResponses").val($("#SurveyResponses").val() +"|"+ $("#tbSecond_Request").val());
+        $("#SurveyResponses").val($("#SurveyResponses").val() + "|" + $("#tbSecond_Request").val());
+        //$.ajax({
+        //    type: "GET",
+        //    url: '/Products/SelectRandomItem',
+        //    contentType: false,
+        //    processData: false,
+        //    data: data,
+        //    success: function (result) {
+        //        console.log(result);
+        //    },
+        //    error: function (result) {
+        //        console.log(result);
+        //    }
+        //})
+
+
+
     });
 });
 

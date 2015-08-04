@@ -50,22 +50,22 @@ namespace WebApplication9.App_Start
         // Send Email
         public ActionResult Email(string Email, string Name)
         {
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("mkohlmann_he@dev.bse.edu", "Test Sender");
-            mail.To.Add(new MailAddress(Email, "Test Customer"));
-            mail.Subject = "Thank you for using SantaBot - Attached is your childs responses.";
-            mail.Body = "Dear <Insert Name Here>,\n\nThank you for using StantaBot!\n\nAttached is <Insert Childs Name Here> responses.\n\nWishList:\n";
-            mail.IsBodyHtml = false;
+            //MailMessage mail = new MailMessage();
+            //mail.From = new MailAddress("", "Test Sender");
+            //mail.To.Add(new MailAddress(Email, "Test Customer"));
+            //mail.Subject = "Thank you for using SantaBot - Attached is your childs responses.";
+            //mail.Body = "Dear <Insert Name Here>,\n\nThank you for using StantaBot!\n\nAttached is <Insert Childs Name Here> responses.\n\nWishList:\n";
+            //mail.IsBodyHtml = false;
 
-            SmtpClient client = new SmtpClient();
-            client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("mkohlmann_he@dev.bse.edu", "Fr0$ty01");
-            client.Port = 587; // You can use Port 25 if 587 is blocked (mine is!)
-            client.Host = "smtp.office365.com";
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.EnableSsl = true;
+            //SmtpClient client = new SmtpClient();
+            //client.UseDefaultCredentials = false;
+            //client.Credentials = new System.Net.NetworkCredential("", "");
+            //client.Port = 587; // You can use Port 25 if 587 is blocked (mine is!)
+            //client.Host = "smtp.office365.com";
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.EnableSsl = true;
 
-            client.Send(mail);
+            //client.Send(mail);
 
             return Redirect("Leads");
         }
